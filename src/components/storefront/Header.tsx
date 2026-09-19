@@ -94,14 +94,14 @@ export default function Header({ categories, storeName, logoUrl }: HeaderProps) 
       </div>
 
       <nav className="hidden border-t border-cream-300 bg-cream-100 lg:block">
-        <div className="container-store flex items-center justify-center gap-6 overflow-x-auto py-3 xl:gap-8">
+        <div className="container-store flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-3 xl:gap-x-8">
           <Link
             href="/busca"
             className="shrink-0 text-xs font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:text-brown-600"
           >
             Todos
           </Link>
-          {categories.map((c) => (
+          {categories.slice(0, 9).map((c) => (
             <Link
               key={c.id}
               href={`/categoria/${c.slug}`}
