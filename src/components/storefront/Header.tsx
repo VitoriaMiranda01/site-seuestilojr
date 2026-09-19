@@ -60,46 +60,6 @@ export default function Header({ categories, storeName, logoUrl }: HeaderProps) 
           )}
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          <div className="group relative">
-            <button className="text-sm font-medium text-ink hover:text-brown-600">
-              Wigs e Cabelos
-            </button>
-            <div className="invisible absolute left-0 top-full grid w-64 grid-cols-1 gap-1 rounded-xl bg-white p-4 opacity-0 shadow-soft transition-all group-hover:visible group-hover:opacity-100">
-              {grouped.wigs_e_cabelos.map((c) => (
-                <Link key={c.id} href={`/categoria/${c.slug}`} className="rounded-lg px-3 py-2 text-sm text-ink hover:bg-cream-200">
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="group relative">
-            <button className="text-sm font-medium text-ink hover:text-brown-600">
-              Acessórios para Wigs
-            </button>
-            <div className="invisible absolute left-0 top-full grid w-64 grid-cols-1 gap-1 rounded-xl bg-white p-4 opacity-0 shadow-soft transition-all group-hover:visible group-hover:opacity-100">
-              {grouped.acessorios.map((c) => (
-                <Link key={c.id} href={`/categoria/${c.slug}`} className="rounded-lg px-3 py-2 text-sm text-ink hover:bg-cream-200">
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="group relative">
-            <button className="text-sm font-medium text-ink hover:text-brown-600">Cuidados</button>
-            <div className="invisible absolute left-0 top-full grid w-64 grid-cols-1 gap-1 rounded-xl bg-white p-4 opacity-0 shadow-soft transition-all group-hover:visible group-hover:opacity-100">
-              {grouped.cuidados.map((c) => (
-                <Link key={c.id} href={`/categoria/${c.slug}`} className="rounded-lg px-3 py-2 text-sm text-ink hover:bg-cream-200">
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <Link href="/busca?ofertas=1" className="text-sm font-medium text-brown-600 hover:text-brown-700">
-            Ofertas
-          </Link>
-        </nav>
-
         <form onSubmit={submitSearch} className="hidden flex-1 max-w-sm items-center lg:flex">
           <div className="flex w-full items-center gap-2 rounded-full border border-cream-400 bg-cream-100 px-4 py-2">
             <Search size={16} className="text-brown-400" />
@@ -132,6 +92,26 @@ export default function Header({ categories, storeName, logoUrl }: HeaderProps) 
           </Link>
         </div>
       </div>
+
+      <nav className="hidden border-t border-cream-300 bg-cream-100 lg:block">
+        <div className="container-store flex items-center justify-center gap-6 overflow-x-auto py-3 xl:gap-8">
+          <Link
+            href="/busca"
+            className="shrink-0 text-xs font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:text-brown-600"
+          >
+            Todos
+          </Link>
+          {categories.map((c) => (
+            <Link
+              key={c.id}
+              href={`/categoria/${c.slug}`}
+              className="shrink-0 text-xs font-semibold uppercase tracking-[0.15em] text-brown-600 transition-colors hover:text-ink"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </nav>
 
       {searchOpen && (
         <form onSubmit={submitSearch} className="border-t border-cream-400 bg-white p-3 lg:hidden">
