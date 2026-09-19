@@ -21,6 +21,7 @@ export default async function HomePage() {
       <Benefits />
 
       <section className="container-store py-8">
+        <h2 className="mb-6 text-center font-display text-2xl font-bold text-ink lg:text-3xl">Categorias</h2>
         <CategoryCarousel categories={data.categories} />
       </section>
 

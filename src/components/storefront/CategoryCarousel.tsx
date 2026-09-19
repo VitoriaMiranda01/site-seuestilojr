@@ -30,27 +30,27 @@ export default function CategoryCarousel({ categories }: { categories: Category[
   return (
     <div className="relative">
       <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex gap-4">
+        <div className="flex gap-4 sm:gap-5">
           {categories.map((cat) => (
             <Link
               key={cat.id}
               href={`/categoria/${cat.slug}`}
-              className="flex w-24 shrink-0 flex-col items-center gap-2 text-center sm:w-28"
+              className="flex w-32 shrink-0 flex-col items-center gap-3 text-center sm:w-40"
             >
               <span
-                className={`relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2 sm:h-24 sm:w-24 ${
-                  cat.highlight ? "border-gold-400" : "border-cream-400"
+                className={`relative block aspect-[3/4] w-full overflow-hidden rounded-2xl bg-cream-200 ${
+                  cat.highlight ? "ring-2 ring-gold-400 ring-offset-2" : ""
                 }`}
               >
                 {cat.image_url ? (
                   <Image src={cat.image_url} alt={cat.name} fill className="object-cover" />
                 ) : (
-                  <span className="bg-cream-200 font-display text-lg text-brown-500">
+                  <span className="flex h-full w-full items-center justify-center font-display text-2xl text-brown-500">
                     {cat.name.charAt(0)}
                   </span>
                 )}
               </span>
-              <span className="text-xs font-medium text-ink line-clamp-2">{cat.name}</span>
+              <span className="text-sm font-medium text-ink line-clamp-2">{cat.name}</span>
             </Link>
           ))}
         </div>
