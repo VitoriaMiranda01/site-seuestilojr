@@ -5,9 +5,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     @apply bg-cream-100 text-ink antialiased;
+    overflow-x: hidden;
   }
 }
 
@@ -20,7 +22,7 @@
     scrollbar-width: none;
   }
   .container-store {
-    @apply mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10;
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-brown-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brown-700 disabled:cursor-not-allowed disabled:opacity-50;
