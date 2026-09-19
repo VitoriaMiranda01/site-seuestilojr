@@ -6,7 +6,7 @@ const PRODUCT_SELECT = "*, product_images(*), product_variants(*), categories(*)
 export async function getHomeData() {
   const supabase = await createClient();
 
-  const [banners, categories, featured, newArrivals, bestsellers, offers, kits] = await Promise.all([
+  const [banners, categories, featured, newArrivals, bestsellers, offers, kits, testimonials] = await Promise.all([
     supabase.from("banners").select("*").eq("active", true).order("sort_order"),
     supabase.from("categories").select("*").eq("active", true).order("sort_order"),
     supabase
@@ -38,6 +38,14 @@ export async function getHomeData() {
       .order("created_at", { ascending: false })
       .limit(10),
     supabase.from("product_kits").select("*").eq("active", true).limit(6),
+    supabase
+      .from("reviews")
+      .select("*")
+      .eq("approved", true)
+      .not("comment", "is", null)
+      .order("rating", { ascending: false })
+      .order("created_at", { ascending: false })
+      .limit(12),
   ]);
 
   const wigsCategoryIds = (categories.data ?? [])
@@ -68,14 +76,18 @@ export async function getHomeData() {
       : Promise.resolve({ data: [] as Product[] }),
   ]);
 
+  const allBanners = banners.data ?? [];
+
   return {
-    banners: banners.data ?? [],
+    banners: allBanners.filter((b) => b.placement === "hero"),
+    collectionBanners: allBanners.filter((b) => b.placement === "collection"),
     categories: categories.data ?? [],
     featured: (featured.data ?? []) as Product[],
     newArrivals: (newArrivals.data ?? []) as Product[],
     bestsellers: (bestsellers.data ?? []) as Product[],
     offers: (offers.data ?? []) as Product[],
     kits: kits.data ?? [],
+    testimonials: testimonials.data ?? [],
     wigsHighlight: (wigsHighlight.data ?? []) as Product[],
     accessoriesHighlight: (accessoriesHighlight.data ?? []) as Product[],
   };

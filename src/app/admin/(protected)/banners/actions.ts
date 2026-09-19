@@ -22,6 +22,7 @@ function payloadFromForm(formData: FormData) {
     mobile_image_url: str(formData.get("mobile_image_url")),
     button_text: str(formData.get("button_text")),
     link_url: str(formData.get("link_url")),
+    placement: (str(formData.get("placement")) ?? "hero") as "hero" | "collection",
     starts_at: str(formData.get("starts_at")),
     ends_at: str(formData.get("ends_at")),
     active: formData.get("active") === "on",

@@ -156,6 +156,7 @@ export type Database = {
           image_url: string;
           link_url: string | null;
           mobile_image_url: string | null;
+          placement: string;
           sort_order: number;
           starts_at: string | null;
           subtitle: string | null;
@@ -171,6 +172,7 @@ export type Database = {
           image_url: string;
           link_url?: string | null;
           mobile_image_url?: string | null;
+          placement?: string;
           sort_order?: number;
           starts_at?: string | null;
           subtitle?: string | null;
@@ -186,6 +188,7 @@ export type Database = {
           image_url?: string;
           link_url?: string | null;
           mobile_image_url?: string | null;
+          placement?: string;
           sort_order?: number;
           starts_at?: string | null;
           subtitle?: string | null;

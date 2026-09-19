@@ -2,9 +2,11 @@ import { getHomeData } from "@/lib/queries";
 import { getSiteSettings } from "@/lib/settings";
 import HeroBanner from "@/components/storefront/HeroBanner";
 import CategoryCarousel from "@/components/storefront/CategoryCarousel";
+import CollectionBanners from "@/components/storefront/CollectionBanners";
 import ProductRail from "@/components/storefront/ProductRail";
 import KitsSection from "@/components/storefront/KitsSection";
 import Benefits from "@/components/storefront/Benefits";
+import Testimonials from "@/components/storefront/Testimonials";
 import WhatsAppSection from "@/components/storefront/WhatsAppSection";
 import InstagramSection from "@/components/storefront/InstagramSection";
 import NewsletterForm from "@/components/storefront/NewsletterForm";
@@ -16,11 +18,15 @@ export default async function HomePage() {
     <div className="animate-fadeIn">
       <HeroBanner banners={data.banners} />
 
+      <Benefits />
+
       <section className="container-store py-8">
         <CategoryCarousel categories={data.categories} />
       </section>
 
       <ProductRail title="Produtos em Destaque" products={data.featured} seeAllHref="/busca?destaque=1" />
+
+      <CollectionBanners banners={data.collectionBanners} />
 
       <div className="section-beige">
         <ProductRail
@@ -42,15 +48,15 @@ export default async function HomePage() {
         <ProductRail title="Lançamentos" products={data.newArrivals} seeAllHref="/busca?novidades=1" />
       </div>
 
-      <ProductRail title="Mais Vendidos" products={data.bestsellers} seeAllHref="/busca?mais-vendidos=1" />
+      <ProductRail title="Ofertas Especiais" products={data.offers} seeAllHref="/busca?ofertas=1" />
 
       <div className="section-beige">
-        <ProductRail title="Ofertas Especiais" products={data.offers} seeAllHref="/busca?ofertas=1" />
+        <ProductRail title="Mais Vendidos" products={data.bestsellers} seeAllHref="/busca?mais-vendidos=1" />
       </div>
 
-      <KitsSection kits={data.kits} />
+      <Testimonials reviews={data.testimonials} />
 
-      <Benefits />
+      <KitsSection kits={data.kits} />
 
       <WhatsAppSection number={settings.whatsapp_number} />
 

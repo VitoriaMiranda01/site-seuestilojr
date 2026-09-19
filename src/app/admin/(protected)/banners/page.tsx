@@ -27,6 +27,9 @@ export default async function AdminBannersPage() {
               <Link href={`/admin/banners/${b.id}`} className="font-medium text-ink hover:underline">{b.title}</Link>
               <p className="text-xs text-brown-400">{b.link_url}</p>
             </div>
+            <span className="rounded-full bg-cream-200 px-2 py-1 text-xs text-brown-600">
+              {b.placement === "collection" ? "Coleções em destaque" : "Banner principal"}
+            </span>
             <span className={`rounded-full px-2 py-1 text-xs ${b.active ? "bg-green-100 text-green-700" : "bg-cream-300 text-brown-500"}`}>
               {b.active ? "Ativo" : "Inativo"}
             </span>

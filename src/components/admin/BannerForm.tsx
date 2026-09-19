@@ -54,6 +54,13 @@ export default function BannerForm({
         Link do botão
         <input name="link_url" defaultValue={banner?.link_url ?? ""} placeholder="/categoria/laces" className="mt-1 w-full rounded-full border border-cream-400 px-4 py-2 text-sm outline-none" />
       </label>
+      <label className="block text-sm">
+        Onde exibir
+        <select name="placement" defaultValue={banner?.placement ?? "hero"} className="mt-1 w-full rounded-full border border-cream-400 px-4 py-2 text-sm outline-none">
+          <option value="hero">Banner principal (rotativo, topo da Home)</option>
+          <option value="collection">Coleções em destaque (dois banners lado a lado)</option>
+        </select>
+      </label>
       <div className="grid grid-cols-2 gap-3">
         <label className="block text-sm">
           Início
